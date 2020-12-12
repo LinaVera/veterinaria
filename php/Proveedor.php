@@ -47,21 +47,6 @@
                      ?>
                 </select>
                 <br> <br>
-                <label for="categoria">Categoria de la empresa</label>
-                <select style="width:100%; height:30px;" name="categoria">
-                    <option value="-1">Seleccione categoria</option>
-                    <?php
-                        require("conexion.php");
-                        $consulta = "SELECT * FROM categoria_producto";
-                        $resultado = $conexion->query($consulta);
-                        while ($fila = $resultado->fetch_assoc()) {
-                    ?>
-                    <option value="<?php echo $fila['CodigoC']; ?>"><?php echo $fila['Nombre_Categoria']; ?></option>
-                    <?php
-                        }
-                     ?>
-                </select>
-                <br> <br>
                 <input type="submit" value="REGISTRAR">
             </form>
             <!--Fin formulario-->
@@ -76,13 +61,12 @@
                 <th>Nombre del representante</th>
                 <th>Dirección</th>
                 <th>Departamento</th>
-                <th>Categoria</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
             <?php                                   
                 require("conexion.php");
-                $consulta = "SELECT p.id, p.NIT, p.Representante, p.empresa, p.direccion, d.departamento, c.Nombre_Categoria FROM proveedor p, departamentos d, categoria_producto c WHERE p.categoria= c.CodigoC AND p.departamento = d.id_departamento";
+                $consulta = "SELECT p.id, p.NIT, p.Representante, p.empresa, p.direccion, d.departamento FROM proveedor p, departamentos d WHERE p.departamento = d.id_departamento";
                 $resultado = $conexion->query($consulta);              
                 while ($fila = $resultado->fetch_assoc()) {
             ?>
@@ -92,7 +76,6 @@
                 <td> <?php echo $fila['Representante']; ?></td>
                 <td> <?php echo $fila['direccion']; ?></td>
                 <td> <?php echo $fila['departamento']; ?></td>
-                <td> <?php echo $fila['Nombre_Categoria']; ?></td>
                 <td>
                     <a href="editarProveedor.php?id=<?php echo $fila['id']; ?>" >
                         <img src="../IMAGENES/edit.png" alt="Editar" style="height:40px"></a>

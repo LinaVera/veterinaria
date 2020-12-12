@@ -14,8 +14,6 @@
         $('.more').live("click", function() {
             var ID = $(this).attr("id");
             if (ID) {
-                // $("#more" + ID).html('<img src="../moreajax.gif" />');
-
                 $.ajax({
                     type: "POST",
                     url: "ajax.php",
@@ -59,6 +57,7 @@
                 <th>Stock</th>
                 <th>Precio de compra</th>
                 <th>Precio de venta</th>
+                <th>Acción</th>
             </tr>
             <?php                                   
                 require("conexion.php");
@@ -67,7 +66,7 @@
                 while($fila=$resultado->fetch_assoc()){
                     $ultimoID=$fila['Codigo'];
             ?>
-            <tr>
+            <tr class="t<?php echo $fila['Cantidad']; ?>">
                 <td> <?php echo $fila['Codigo']; ?></td>
                 <td> <?php echo '<img style="width:180px" src="data:image/jpeg;base64,'.base64_encode($fila["Imagen"]).'"/>';?>
                 </td>
@@ -78,7 +77,12 @@
                 <td> <?php echo $fila['Cantidad']; ?></td>
                 <td> <?php echo number_format($fila['Precio_Compra'],2); ?></td>
                 <td> <?php echo number_format($fila['Precio_Venta'],2); ?></td>
+                <td>
+                    <a href="editarMascota.php?id=<?php echo $fila['Codigo']; ?>">
+                    <img src="../IMAGENES/service.png" alt="Editar" style="height:40px"></a>
+                </td>
             </tr>
+          
             <?php
                 }
          ?>

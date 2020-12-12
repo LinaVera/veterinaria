@@ -1,4 +1,8 @@
-/******************************Tablas**************/
+/******************************Inventario**************/
+.t0, .t1, .t2, .t3{
+  background-color: rgb(255, 166, 0) !important;
+}
+/*****************************Tablas**************/
 #table table {
   overflow-x:auto;
     margin-top:20px;

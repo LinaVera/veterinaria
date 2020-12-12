@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <div class="logo_main">
         <a href="../index.html">
@@ -56,12 +58,29 @@
                     ?>
                     </select>
                 </div><br>
+                <div>
+                    <label for="proveedor">Proveedor:</label>
+                    <select name="proveedor" style="width:100%;">
+                        <option value="-1">Seleccione proveedor</option>
+                        <?php
+                        require("conexion.php");
+                        $consulta = "SELECT * FROM proveedor";
+                        $resultado = $conexion->query($consulta);
+                        while ($fila = $resultado->fetch_assoc()) {
+                    ?>
+                        <option value="<?php echo $fila['id']; ?>"><?php echo $fila['NIT']; ?> - <?php echo $fila['empresa']; ?>
+                        </option>
+                        <?php
+                        }
+                    ?>
+                    </select>
+                </div><br> 
                 <label for="Cantidad">Cantidad</label>
-                <input type="text" name="cantidad" placeholder="Cantidad">
+                <input type="number" name="cantidad" placeholder="Cantidad">
                 <label for="Precio compra">Precio compra</label>
-                <input type="text" name="precio_compra" placeholder="Precio compra">
+                <input type="number" name="precio_compra" placeholder="Precio compra">
                 <label for="Precio venta">Precio venta</label>
-                <input type="text" name="precio_venta" placeholder="Precio venta">
+                <input type="number" name="precio_venta" placeholder="Precio venta">
                 <input type="submit" value="REGISTRAR">
             </form>
             <!--Fin formulario-->
@@ -103,7 +122,7 @@
                 <td> <?php echo number_format($fila['Precio_Venta'],2); ?></td>
                 <td>
 
-                    <a  href="editarProducto.php?id=<?php echo $fila['Codigo']; ?>">
+                    <a href="editarProducto.php?id=<?php echo $fila['Codigo']; ?>">
                         <img src="../IMAGENES/edit.png" alt="Editar" style="height:40px"></a>
                 </td>
                 <td>
@@ -123,4 +142,5 @@
         </p>
     </footer>
 </body>
+
 </html>

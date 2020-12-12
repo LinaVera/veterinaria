@@ -63,30 +63,7 @@
                             ?>
                         </select>
                 <br> <br>
-                <label for="categoria">Categoria de la empresa</label>
-                <select name="categoria" style="width:100%;">
-                            <option value="-1">Seleccione categoria</option>
-                            <?php
-                                require("conexion.php");
-                                $consulta = "SELECT cp.Nombre_Categoria, p.Categoria, cp.CodigoC  FROM proveedor p, categoria_producto cp WHERE p.id='$did'";
-                                
-                                $resultado = $conexion->query($consulta);
-                                while ($fila = $resultado->fetch_assoc()) {
-                                    if($fila['Categoria']==$fila['CodigoC']){
-                                        ?>
-                            <option selected="true" value="<?php echo $fila['Categoria']; ?>">
-                                <?php echo $fila['Nombre_Categoria']; ?></option>
-                            <?php
-                                    }else{
-                            ?>
-                            <option value="<?php echo $fila['Categoria']; ?>"><?php echo $fila['Nombre_Categoria']; ?>
-                            </option>
-                            <?php
-                        }
-                                }
-                            ?>
-                        </select>
-                <br> <br>
+                
                 <button type="submit" id="guardar" class="btn btn-primary">Guardar cambios</button>
                     <button> <a href="Proveedor.php" title="Cerrar">Regresar</a></button>
             </form>
