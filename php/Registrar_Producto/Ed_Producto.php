@@ -8,9 +8,10 @@
     $cantidad = $_POST['cantidad'];
     $precio_compra = $_POST['precio_compra'];
     $precio_venta = $_POST['precio_venta'];
+    $pro = $_POST['proveedor'];
     require("../conexion.php");
     //Vacios o no seleccionados y negativos
-    if ($codigo!= null && $nombre != null && $descripcion != null && $categoria != -1 && $especie != -1 && $cantidad >=0 && $precio_compra >=0 && $precio_venta >=0) {
+    if ($codigo!= null && $nombre != null && $descripcion != null && $categoria != -1 && $especie != -1 && $cantidad >=0 && $precio_compra >=0 && $precio_venta >=0 && $pro !=-1) {
         $sql="SELECT * FROM producto WHERE Codigo ='$codigo'";
         $resultado=$conexion->query($sql);
         $con=$resultado->num_rows;
@@ -23,11 +24,11 @@
             }else{
                 if($imagen==false ){
                     //No modifica la imagen
-                    $query = "UPDATE producto SET Nombre_Producto='$nombre', Descripcion='$descripcion',Especie='$especie',Categoria='$categoria',Cantidad='$cantidad',Precio_Compra='$precio_compra',Precio_Venta='$precio_venta'
+                    $query = "UPDATE producto SET Nombre_Producto='$nombre', Descripcion='$descripcion',Especie='$especie',Categoria='$categoria',Cantidad='$cantidad',Precio_Compra='$precio_compra',Precio_Venta='$precio_venta', proveedor ='$pro'
                     WHERE Codigo='$codigo'";
                 }else{
                     //Modifica la imagen
-                    $query = "UPDATE producto SET Imagen= '$imagen', Nombre_Producto='$nombre', Descripcion='$descripcion',Especie='$especie',Categoria='$categoria',Cantidad='$cantidad',Precio_Compra='$precio_compra',Precio_Venta='$precio_venta'
+                    $query = "UPDATE producto SET Imagen= '$imagen', Nombre_Producto='$nombre', Descripcion='$descripcion',Especie='$especie',Categoria='$categoria',Cantidad='$cantidad',Precio_Compra='$precio_compra',Precio_Venta='$precio_venta', proveedor ='$pro'
                     WHERE Codigo='$codigo'";
                 }
                 

@@ -106,6 +106,34 @@
                         </select>
                     </div>
                     <br>
+
+                    <div>
+                        <label for="proveedor">Proveedor</label>
+                        <select name="proveedor" style="width:100%;">
+                            <option value="0">Seleccione proveedor</option>
+                            <?php
+                                require("conexion.php");
+                                $consulta = "SELECT p.empresa, p.NIT, pr.proveedor, p.id FROM proveedor p, producto pr WHERE pr.Codigo='$did'";
+                                
+                                $resultado = $conexion->query($consulta);
+                                while ($fila = $resultado->fetch_assoc()) {
+                                    if($fila['id']==$fila['proveedor']){
+                                        ?>
+                            <option selected="true" value="<?php echo $fila['id']; ?>">
+                            <?php echo $fila['NIT']; ?> - <?php echo $fila['empresa']; ?></option>
+                            <?php
+                                    }else{
+                            ?>
+                            <option value="<?php echo $fila['id']; ?>"><?php echo $fila['NIT']; ?> - <?php echo $fila['empresa']; ?>
+                            </option>
+                            <?php
+                        }
+                                }
+                            ?>
+                        </select>
+                    </div>
+
+                   <br>
                     <label for="Cantidad">Cantidad</label>
                     <?php
                         require("conexion.php");
