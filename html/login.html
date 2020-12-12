@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar sesión</title>
+    <link rel="icon" href="../IMAGENES/icon1.png" />
+    <link rel="stylesheet" href="../css/estilos.css" />
+  </head>
+  <body>
+
+    <div class="login-box">
+      <img
+        class="avatar"
+        src="../IMAGENES/icon1.png"
+        alt="Error al cargar la imagen"
+      />
+      <h1>Iniciar sesion</h1>
+          <!-- formulario login -->
+      <form action="../php/login.php" method="POST">
+        <label for="Usuario">Usuario</label>
+        <input
+          type="text"
+          placeholder="Ingrese Usuario"
+          name="usuario"
+          required
+        />
+        <label for="Contraseña">Contraseña</label>
+        <input
+          type="password"
+          placeholder="Ingrese Contraseña"
+          name="clave"
+          required
+        />
+        <input type="submit" value="INICIAR SESION" />
+      </form>
+    </div>
+  </body>
+</html>
