@@ -47,11 +47,10 @@
                 $resultado = $conexion->query($sql);
                 while($fila=$resultado->fetch_assoc()){
             ?>
-            <tr class="t<?php echo $fila['id_factura']; ?>">
+            <tr>
                 <td> <?php echo $fila['id_facturaP']; ?></td>
                 <td> <?php echo $fila['Fecha']; ?></td>
                 <td> <?php echo $fila['hora']; ?></td>
-
                 <td> <?php echo $fila['t']; ?></td>
                 <td> <?php echo $fila['NombreMascota']; ?></td>
                 <td> <?php echo $fila['Nombre']; ?></td>
@@ -88,14 +87,48 @@
         $resultado = $conexion->query($sql);
         while($fila=$resultado->fetch_assoc()){
     ?>
-            <tr class="t<?php echo $fila['id']; ?>">
+            <tr>
                 <td> <?php echo $fila['id']; ?></td>
                 <td> <?php echo $fila['Fecha']; ?></td>
                 <td> <?php echo $fila['hora']; ?></td>
                 <td> <?php echo $fila['t']; ?></td>
                 <td> <?php echo $fila['Nombre']; ?></td>
-
                 <td> <?php echo number_format($fila['total'],2); ?></td>
+            </tr>
+
+            <?php
+        }
+ ?>
+        </table>
+    </div>
+    <!--Fin tabla de ventas de productos-->
+    <!--Tabla de domicilio-->
+    <div id="table">
+        <table class="table" id="tabla">
+            <tr>
+                <th colspan="8">Tabla de facturas de venta de productos</th>
+            </tr>
+            <tr>
+                <th>Código</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Factura</th>
+                <th>Dirección</th>
+                <th>Domicilio</th>
+            </tr>
+            <?php                                   
+        require("conexion.php");
+        $sql="SELECT * FROM domicilio ORDER BY Fecha DESC";
+        $resultado = $conexion->query($sql);
+        while($fila=$resultado->fetch_assoc()){
+    ?>
+            <tr>
+                <td> <?php echo $fila['id']; ?></td>
+                <td> <?php echo $fila['Fecha']; ?></td>
+                <td> <?php echo $fila['hora']; ?></td>
+                <td> <?php echo $fila['Factura']; ?></td>
+                <td> <?php echo $fila['direccion']; ?></td>
+                <td> <?php echo number_format($fila['precio'],2); ?></td>
             </tr>
 
             <?php
@@ -106,7 +139,7 @@
     <!--Fin tabla de facturas-->
     <div>
         <?php
-    $sql="SELECT SUM(fa.Precio+ fp.total) as e FROM factura_atencion fa, factura_producto fp";
+    $sql="SELECT SUM(fa.Precio+ fp.total+d.precio) as e FROM factura_atencion fa, factura_producto fp, domicilio d";
     $resultadol = $conexion->query($sql);
     $fila = $resultadol->fetch_assoc();
     ?>

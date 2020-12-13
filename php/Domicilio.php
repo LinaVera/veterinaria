@@ -22,71 +22,58 @@
     <div id="servi">
         <div class="Conte-inputs">
             <img class="avatar" src="../IMAGENES/icon2.jpg" alt="Error al cargar la imagen">
-            <h1>ATENCIÓN A LA MASCOTA</h1>
+            <h1>DOMICILIO</h1>
             <h1><?php echo $fecha=date("Y-m-d");?></h1>
             <?php date_default_timezone_set("America/Bogota");?>
             <h1><?php echo $hora=date("H:i");?></h1>
             <!--Formulario-->
-            <form action="AtencionMascota/R_AtencioMascota.php" method="POST">
+            <form action="Domicilio/R_Domicilio.php" method="POST">
                 <div>
-                <label for="producto">Productos:</label>
-                    <select name="producto" style="width:100%">
-                        <option value="-1">Seleccione producto</option>
+                <label for="fac">Facturas:</label>
+                    <select name="fac" style="width:100%;  height:30px;">
+                        <option value="-1">Seleccione factura:</option>
                         <?php
                             require("conexion.php");
-                            $consulta = "SELECT * FROM producto";
+                            $consulta = "SELECT * FROM factura_producto WHERE fecha >= '$hora'";
                             $resultado = $conexion->query($consulta);
                             while ($fila = $resultado->fetch_assoc()) {
                         ?>
-                        <option value="<?php echo $fila['Codigo']; ?>"><?php echo $fila['Nombre_Producto']; ?></option>
+                        <option value="<?php echo $fila['id']; ?>"><?php echo $fila['id']; ?> ~ <?php echo $fila['Fecha']; ?> - <?php echo $fila['hora']; ?></option>
                         <?php
                             }
                         ?>
                     </select>
                 </div>
-                <br> <br>
+                <br>
+                <label for="dep">Departamentos de Colombia</label>
+                <select style="width:100%; height:30px;" name="departamento">
+                    <option value="-1">Seleccione departamento de la empresa</option>
+                    <?php
+                        require("conexion.php");
+                        $consulta = "SELECT * FROM departamentos";
+                        $resultado = $conexion->query($consulta);
+                        while ($fila = $resultado->fetch_assoc()) {
+                    ?>
+                    <option value="<?php echo $fila['id_departamento']; ?>"><?php echo $fila['departamento']; ?></option>
+                    <?php
+                        }
+                     ?>
+                </select>
+                <br><br>
                 <div>
-                <label for="cant">Cantidad:</label>
-                <input type="numbre" name="cant" placeholder="Digite las unidades del producto.">
+                <label for="dir">Dirección:</label>
+                <input type="text" name="dir" placeholder="Digite dirección del usuario.">
+                </div>
+                <div>
+                <label for="ad">Adicional:</label>
+                <input type="text" value="0" name="ad" placeholder="Digite adicional, si es necesario." default="0">
                 </div>
 
-                <input type="submit" value="Añadir">
+                <input type="submit" value="Realizar domicilio">
             </form>
             <!--Fin formulario-->
         </div>
     </div>
-    <!--Tabla-->
-    <div id="table">
-        <table class="table">
-            <tr>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Eliminar</th>
-            </tr>
-
-            <?php                                   
-                require("conexion.php");
-                $consulta = "SELECT d.Cantidad, p.Nombre_Producto, d.Precio FROM detalle d, producto p WHERE d.Factura IS NULL AND d.Producto = p.Codigo ";
-                $resultado = $conexion->query($consulta);
-              
-                while ($fila = $resultado->fetch_assoc()) {
-            ?>
-            <tr>
-                <td> <?php echo $fila['Nombre_Producto']; ?></td>
-                <td> <?php echo $fila['Cantidad']; ?></td>
-                <td> <?php echo $fila['Precio']; ?></td>
-                <td>
-                    <a href="AtencionMascota/Eli_AtencionMascota.php?id=<?php echo $fila['Codigo']; ?>">
-                        <img src="../IMAGENES/trash.png" alt="Borrar" style="height:40px"></a>
-                </td>
-            </tr>
-            <?php
-                }
-            ?>
-        </table>
-    </div>
-    <!--Fin tabla-->
 
     <footer>
         <p>

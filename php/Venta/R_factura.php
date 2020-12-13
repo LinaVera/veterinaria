@@ -1,6 +1,6 @@
 <?php
     $cliente= $_POST['cliente'];
-    $total = $_POST['total'];
+    $totl = $_POST['total'] ;
     //hora y fecha
     date_default_timezone_set("America/Bogota");
     $fecha = date("Y-m-d");
@@ -11,6 +11,7 @@
     $empleado = $_SESSION['codigo'];
 
     if($cliente !=null){
+        $total = $totl + ($totl*0.16);
         //buscar cliente
         $sql="SELECT * FROM usuario WHERE Cedula = '$cliente'";
         $resultado=$conexion->query($sql);
@@ -31,7 +32,7 @@
                 $sql = "UPDATE detalle SET Factura ='$id' WHERE Factura IS NULL ";
                 if($saberBD=$conexion->query($sql)){
                     echo'<script type="text/javascript">
-                    alert("Compra registrada");
+                    alert("Compra registrada. Valor a pagar + IVA (16%): '.$total.'");
                     window.location.href="../Venta.php";
                     </script>';
                 }else{
