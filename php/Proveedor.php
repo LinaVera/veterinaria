@@ -66,7 +66,7 @@
             </tr>
             <?php                                   
                 require("conexion.php");
-                $consulta = "SELECT p.id, p.NIT, p.Representante, p.empresa, p.direccion, d.departamento FROM proveedor p, departamentos d WHERE p.departamento = d.id_departamento";
+                $consulta = "SELECT p.id, p.NIT, p.Representante, p.empresa, p.direccion, d.departamento FROM proveedor1 p, departamentos d WHERE p.departamento = d.id_departamento";
                 $resultado = $conexion->query($consulta);              
                 while ($fila = $resultado->fetch_assoc()) {
             ?>

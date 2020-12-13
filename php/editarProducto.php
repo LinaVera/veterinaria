@@ -113,7 +113,7 @@
                             <option value="0">Seleccione proveedor</option>
                             <?php
                                 require("conexion.php");
-                                $consulta = "SELECT p.empresa, p.NIT, pr.proveedor, p.id FROM proveedor p, producto pr WHERE pr.Codigo='$did'";
+                                $consulta = "SELECT p.empresa, p.NIT, pr.proveedor, p.id FROM proveedor1 p, producto pr WHERE pr.Codigo='$did'";
                                 
                                 $resultado = $conexion->query($consulta);
                                 while ($fila = $resultado->fetch_assoc()) {

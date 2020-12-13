@@ -70,7 +70,7 @@
                             href="javascript:document.getElementById('obj<?php echo $fila['Nombre_Producto']; ?>').style.display='block';void0">Mostrar
                             descripción</a>
                         <br>
-                        <button disabled>Comprar </button>
+                        
                     </li>
                     <?php
                             }elseif($fila['Categoria']==2){
@@ -92,7 +92,7 @@
                                 href="javascript:document.getElementById('obj<?php echo $fila['Nombre_Producto']; ?>').style.display='block';void0">Mostrar
                                 descripción</a>
                             <br>
-                            <button disabled>Comprar </button>
+                           
                         </li>
                         <?php
 
@@ -116,7 +116,7 @@
                                     href="javascript:document.getElementById('obj<?php echo $fila['Nombre_Producto']; ?>').style.display='block';void0">Mostrar
                                     descripción</a>
                                 <br>
-                                <button disabled>Comprar </button>
+                                
                             </li>
                             <?php
                             }elseif($fila['Categoria']==4){
@@ -139,7 +139,7 @@
                                         href="javascript:document.getElementById('obj<?php echo $fila['Nombre_Producto']; ?>').style.display='block';void0">Mostrar
                                         descripción</a>
                                     <br>
-                                    <button disabled>Comprar </button>
+                                   
                                 </li>
                                 <?php
 

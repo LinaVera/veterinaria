@@ -11,10 +11,9 @@ if($rol==1){//Es
         <nav class="menu" id="menu">
             <ul>
                 <li><a href="inventario.php">INVENTARIO</a></li>
-                <li><a href="Insumos.php">Insumos</a></li><!--Accion de mostrar por categoria los proveedores-->
                 <li><a href="Trabajador.php">Trabajadores</a></li>
                 <li><a href="Proveedor.php">Proveedores</a></li>
-                <li><a href="AtencionMascota.php">Ventas</a></li><!--Todas las facturas, tanto de productos como de mascotas-->
+                <li><a href="Factura.php">Ventas</a></li><!--Todas las facturas, tanto de productos como de mascotas-->
                 <li><a href="logOut.php">CERRAR SESION</a></li>
             </ul>
         </nav>

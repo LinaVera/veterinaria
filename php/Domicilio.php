@@ -23,45 +23,7 @@
             <h1>REGISTRO PRODUCTO</h1>
             <!--Formulario-->
             <form action="Registrar_Producto/R_Producto.php" method="POST" enctype='multipart/form-data'>
-                <label for="Codigo">Codigo</label>
-                <input type="text" name="codigo" placeholder="Codigo">
-                <label for="Imagen">Imagen</label>
-                <input type="file" name="imagen" placeholder="Imagen">
-                <label for="Nombre Producto">Nombre Producto</label>
-                <input type="text" name="nombreP" placeholder="Nombre">
-                <label for="Descripcion">Descripcion</label>
-                <textarea name="descripcion" placeholder="Descripcion" style="width:100%;"></textarea>
-                <div>
-                    <label for="Especie">Especie</label>
-                    <select name="cboEspecie" style="width:100%;">
-                        <option value="-1">Seleccionar</option>
-                        <option value="Perro">Perro</option>
-                        <option value="Gato">Gato</option>
-                    </select>
-                </div><br>
-                <div>
-                    <label for="Categoria">Categoria</label>
-                    <select name="cboCategoria" style="width:100%;">
-                        <option value="-1">Seleccione categoria</option>
-                        <?php
-                        require("conexion.php");
-                        $consulta = "SELECT * FROM categoria_producto";
-                        $resultado = $conexion->query($consulta);
-                        while ($fila = $resultado->fetch_assoc()) {
-                    ?>
-                        <option value="<?php echo $fila['CodigoC']; ?>"><?php echo $fila['Nombre_Categoria']; ?>
-                        </option>
-                        <?php
-                        }
-                    ?>
-                    </select>
-                </div><br>
-                <label for="Cantidad">Cantidad</label>
-                <input type="text" name="cantidad" placeholder="Cantidad">
-                <label for="Precio compra">Precio compra</label>
-                <input type="text" name="precio_compra" placeholder="Precio compra">
-                <label for="Precio venta">Precio venta</label>
-                <input type="text" name="precio_venta" placeholder="Precio venta">
+                
                 <input type="submit" value="REGISTRAR">
             </form>
             <!--Fin formulario-->
@@ -91,9 +53,7 @@
             ?>
             <tr>
                 <td> <?php echo $fila['Codigo']; ?></td>
-                <td> <?php                                   
-                echo '<img style="width:180px" src="data:image/jpeg;base64,'.base64_encode($fila["Imagen"]).'"/>';                
-                ?></td>
+                
                 <td> <?php echo $fila['Nombre_Producto']; ?></td>
                 <td> <?php echo $fila['Descripcion']; ?></td>
                 <td> <?php echo $fila['Especie']; ?></td>

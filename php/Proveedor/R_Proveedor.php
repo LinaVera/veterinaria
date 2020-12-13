@@ -6,7 +6,7 @@
  $direccion= $_POST['direccion'];
  require("../conexion.php");
  if($nit !=null && $representante != null && $empresa != null && $depa != -1 ){
-    $sql="SELECT * FROM proveedor WHERE NIT='$nit'";
+    $sql="SELECT * FROM proveedor1 WHERE NIT='$nit'";
     $resultado=$conexion->query($sql);
     $con=$resultado->num_rows;
     //No exista ya el codigo
@@ -16,7 +16,7 @@
             window.location.href="../Proveedor.php";
             </script>';
         }else{
-            $saber="INSERT INTO proveedor(`NIT`, `Representante`,`empresa`,`direccion`,`departamento`) VALUES('$nit', '$representante' ,'$empresa', '$direccion','$depa')";
+            $saber="INSERT INTO proveedor1(`NIT`, `Representante`,`empresa`,`direccion`,`departamento`) VALUES('$nit', '$representante' ,'$empresa', '$direccion','$depa')";
                 if($saberBD=$conexion->query($saber)){
                     echo'<script type="text/javascript">
                     alert("Se registró proveedor exitosamente.");

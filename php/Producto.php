@@ -64,7 +64,7 @@
                         <option value="-1">Seleccione proveedor</option>
                         <?php
                         require("conexion.php");
-                        $consulta = "SELECT * FROM proveedor";
+                        $consulta = "SELECT * FROM proveedor1";
                         $resultado = $conexion->query($consulta);
                         while ($fila = $resultado->fetch_assoc()) {
                     ?>
@@ -76,11 +76,11 @@
                     </select>
                 </div><br> 
                 <label for="Cantidad">Cantidad</label>
-                <input type="number" name="cantidad" placeholder="Cantidad">
+                <input type="text" name="cantidad" placeholder="Cantidad">
                 <label for="Precio compra">Precio compra</label>
-                <input type="number" name="precio_compra" placeholder="Precio compra">
+                <input type="text" name="precio_compra" placeholder="Precio compra">
                 <label for="Precio venta">Precio venta</label>
-                <input type="number" name="precio_venta" placeholder="Precio venta">
+                <input type="text" name="precio_venta" placeholder="Precio venta">
                 <input type="submit" value="REGISTRAR">
             </form>
             <!--Fin formulario-->

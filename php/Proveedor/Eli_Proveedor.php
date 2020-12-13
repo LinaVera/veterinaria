@@ -1,7 +1,7 @@
 <?php
     $id=$_REQUEST['id'];
     require("../conexion.php");
-    $saber="DELETE FROM proveedor WHERE id='$id'";
+    $saber="DELETE FROM proveedor1 WHERE id='$id'";
     $saberBD=$conexion->query($saber);
     if($saberBD){
         echo'<script type="text/javascript">

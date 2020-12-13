@@ -7,6 +7,7 @@
     <title>ADMINISTRADOR</title>
     <link rel="icon" href="../IMAGENES/icon1.png">
     <link rel="stylesheet" href="../css/estilos.css">
+    <script src="../js/formulario.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
     <script type="text/javascript">
@@ -78,27 +79,38 @@
                 <td> <?php echo number_format($fila['Precio_Compra'],2); ?></td>
                 <td> <?php echo number_format($fila['Precio_Venta'],2); ?></td>
                 <td>
-                    <a href="editarMascota.php?id=<?php echo $fila['Codigo']; ?>">
+                    <a class="view__noreinfo" href="#exampleModal"  onclick="dato(<?php echo $fila['Codigo'];?>)">
                     <img src="../IMAGENES/service.png" alt="Editar" style="height:40px"></a>
                 </td>
             </tr>
-          
             <?php
                 }
          ?>
         </table>
-        <!---Mostrar TODOS-->
-
-        <div id="more<?php echo $ultimoID; ?>" class="morebox">
-            <button
-                style="background-color:#BE81F7; height: 50px; margin-left: auto; display:block; margin-right: auto;">
-                <a href="#" class="more" id="<?php echo $ultimoID; ?>">Mostrar todos los productos</a></button>
-        </div>
-
-        <!--Fin de Mostrar TODOS-->
     </div>
 
     <!--Fin tabla de productos-->
+     <!--Modal-->
+     <div class="openClick" id="exampleModal">
+        <div class="cajaModal efecto">
+            <a href="#close" title="Cerrar" class="close">X</a>
+            <h3>Editar registro de atención mascota</h3>
+            <!--Form modal-->
+            <form action="Insumo.php" method="POST">
+            <div class="ModalCuerpo">
+                <p id="espacio"></p>
+                <label for="Nombre Mascota">Cantidad a pedir del producto:</label> <br> <br>
+                <input style="width:100%" type="number" name="cant" placeholder="Digite unidades del producto">
+                <br> <br> <br>
+                    <button type="submit" id="guardar" class="btn btn-primary">Realizar pedido</button>
+                    <button> <a href="#close" title="Cerrar">Cerrar</a></button>
+                </div>
+            </form>
+            <!--Fin form modal-->
+        </div>
+    </div>
+    <!--Fin modal-->
+    <script src="../js/formulario.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
 </body>
 </html>

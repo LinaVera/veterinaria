@@ -34,12 +34,12 @@
                 
                 if($saberBD=$conexion->query($query)){
                     echo'<script type="text/javascript">
-                    alert("Se registró producto exitosamente.");
+                    alert("Se actualizó producto exitosamente.");
                     window.location.href="../Producto.php";
                     </script>';
                 }else{
                     echo'<script type="text/javascript">
-                    alert("Error, no se registró producto.");
+                    alert("Error, no se actualizó producto.");
                     window.location.href="../Producto.php";
                     </script>';           
                 }   

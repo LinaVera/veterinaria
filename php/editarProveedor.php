@@ -26,7 +26,7 @@
             <!--Formulario-->
             <form action="Proveedor/Ed_Proveedor.php" method="POST">
             <?php
-                        $consulta = "SELECT * FROM proveedor WHERE id='$did'";
+                        $consulta = "SELECT * FROM proveedor1 WHERE id='$did'";
                         $resultado = $conexion->query($consulta);
                         $fila = $resultado->fetch_assoc();
                     ?>
@@ -44,7 +44,7 @@
                             <option value="-1">Seleccione categoria</option>
                             <?php
                                 require("conexion.php");
-                                $consulta = "SELECT cp.departamento as r, p.departamento, cp.id_departamento  FROM proveedor p, departamentos cp WHERE p.id='$did' ";
+                                $consulta = "SELECT cp.departamento as r, p.departamento, cp.id_departamento  FROM proveedor1 p, departamentos cp WHERE p.id='$did' ";
                                 
                                 $resultado = $conexion->query($consulta);
                                 while ($fila = $resultado->fetch_assoc()) {
