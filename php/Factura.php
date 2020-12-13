@@ -65,13 +65,52 @@
         </table>
     </div>
     <!--Fin tabla de facturas-->
+    <!--Tabla de productos-->
+    <div id="table">
+        <table class="table" id="tabla">
+            <tr>
+                <th colspan="8">Tabla de facturas de venta de productos</th>
+            </tr>
+            <tr>
+                <th>Código</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Empleado</th>
+                <th>Cliente</th>
+                <th>Venta</th>
+            </tr>
+            <?php                                   
+        require("conexion.php");
+        $sql="SELECT fp.id, fp.Fecha, fp.hora, fp.total,
+        u.Nombre, t.Nombre as t
+        FROM factura_producto fp, usuario u, trabajador t
+        WHERE fp.Usuario = u.Codigo AND fp.trabajador = t.Codigo ORDER BY Fecha DESC";
+        $resultado = $conexion->query($sql);
+        while($fila=$resultado->fetch_assoc()){
+    ?>
+            <tr class="t<?php echo $fila['id']; ?>">
+                <td> <?php echo $fila['id']; ?></td>
+                <td> <?php echo $fila['Fecha']; ?></td>
+                <td> <?php echo $fila['hora']; ?></td>
+                <td> <?php echo $fila['t']; ?></td>
+                <td> <?php echo $fila['Nombre']; ?></td>
+
+                <td> <?php echo number_format($fila['total'],2); ?></td>
+            </tr>
+
+            <?php
+        }
+ ?>
+        </table>
+    </div>
+    <!--Fin tabla de facturas-->
     <div>
         <?php
-    $sql="SELECT SUM(Precio) as precio FROM factura_atencion";
+    $sql="SELECT SUM(fa.Precio+ fp.total) as e FROM factura_atencion fa, factura_producto fp";
     $resultadol = $conexion->query($sql);
     $fila = $resultadol->fetch_assoc();
     ?>
-        <h1>Total: <?php echo number_format($fila['precio'],2);?></h1>
+        <h1>Total: <?php echo number_format($fila['e'],2);?></h1>
     </div>
 
 </body>

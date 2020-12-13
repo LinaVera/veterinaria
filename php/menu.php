@@ -29,7 +29,7 @@ if($rol==1){//Es
                 <li><a href="Mascota.php">Mascota</a></li>
                 <li><a href="Producto.php">Producto</a></li>
                 <li><a href="Usuario.php">Usuario</a></li>
-                <li><a href="AtencionMascota.php">Compra</a></li>
+                <li><a href="Venta.php">Compra</a></li>
                 <li><a href="Domicilio.php">Domicilio</a></li>
             </ul>
         </nav>
