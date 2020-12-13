@@ -35,7 +35,7 @@ if($rol==1){//Es
         </nav>
     </header>
 <?php
-}else if($rol==2){//Es empleado, puede realizar facturas, registrar domiciliarios, mascotas, atencion, productos.
+}else if($rol==3){//Es empleado, puede realizar facturas, registrar domiciliarios, mascotas, atencion, productos.
 ?>
 <header>
         <input type="checkbox" id="btn-menu">
